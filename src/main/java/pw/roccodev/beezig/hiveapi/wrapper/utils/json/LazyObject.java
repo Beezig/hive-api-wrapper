@@ -61,5 +61,11 @@ public class LazyObject extends JObject {
         checkIfSourceExists();
         return super.getInt(key);
     }
+
+    @Override
+    public boolean getBoolean(String key) {
+        checkIfSourceExists();
+        return super.getBoolean(key);
+    }
 }
 

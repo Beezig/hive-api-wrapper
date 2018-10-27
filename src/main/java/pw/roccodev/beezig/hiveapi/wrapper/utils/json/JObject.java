@@ -39,6 +39,10 @@ public class JObject {
         return (int) getLong(key);
     }
 
+    public boolean getBoolean(String key) {
+        return (boolean) jsonInput.get(key);
+    }
+
     public JSONObject getInput() {
         return jsonInput;
     }

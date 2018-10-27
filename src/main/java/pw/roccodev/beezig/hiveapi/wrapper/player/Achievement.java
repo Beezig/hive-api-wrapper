@@ -4,12 +4,12 @@ import pw.roccodev.beezig.hiveapi.wrapper.utils.json.JObject;
 
 import java.util.Date;
 
-public class GameAchievement {
+public class Achievement {
 
     private JObject source;
     private String key;
 
-    public GameAchievement(String key, JObject source) {
+    public Achievement(String key, JObject source) {
         this.key = key;
         this.source = source;
     }

@@ -1,20 +1,24 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player;
 
 import org.json.simple.JSONObject;
+import pw.roccodev.beezig.hiveapi.wrapper.game.Game;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
-import pw.roccodev.beezig.hiveapi.wrapper.utils.json.JObject;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class GameStats {
 
     private LazyObject source;
+    private String usernameOrUUID;
+    private String shortcode;
 
     public GameStats(String usernameOrUUID, String shortcode) {
+        this.usernameOrUUID = usernameOrUUID;
+        this.shortcode = shortcode;
         source = new LazyObject(null, new UrlBuilder().hive().player(usernameOrUUID, shortcode).build());
     }
 
@@ -38,26 +42,41 @@ public class GameStats {
         return source.getString("title");
     }
 
-    public List<GameAchievement> getAchievements() {
+    public List<Achievement> getAchievements() {
 
         JSONObject rawAchievements = source.getJSONObject("achievements");
-        List<GameAchievement> achievements = new ArrayList<>();
-        for(Object achievement : rawAchievements.entrySet()) {
-            if(!(achievement instanceof Map.Entry)) continue;
-            Map.Entry<String, Object> entry = (Map.Entry<String, Object>) achievement;
-            if(!(entry.getValue() instanceof JSONObject)) continue; // Skip the version object
-            achievements.add(new GameAchievement(entry.getKey(), new JObject((JSONObject)entry.getValue())));
-        }
+        List<Achievement> achievements = new ArrayList<>();
+        HivePlayer.parseAchievements(rawAchievements, achievements);
 
         return achievements;
     }
 
-    public List<GameAchievement> getUnlockedAchievements() {
-        return getAchievements().stream().filter(GameAchievement::isUnlocked).collect(Collectors.toList());
+    public List<Achievement> getUnlockedAchievements() {
+        return getAchievements().stream().filter(Achievement::isUnlocked).collect(Collectors.toList());
+    }
+
+    public Date getFirstLogin() {
+        return new Date(source.getLong("firstLogin") * 1000);
+    }
+
+    public Date getLastLogin() {
+        return new Date(source.getLong("lastlogin") * 1000);
+    }
+
+    public Date getCachedAt() {
+        return new Date(source.getLong("cached") * 1000);
     }
 
     public LazyObject getSource() {
         return source;
+    }
+
+    public HivePlayer getPlayer() {
+        return new HivePlayer(usernameOrUUID);
+    }
+
+    public Game getGameMode() {
+        return new Game(shortcode);
     }
 
 }

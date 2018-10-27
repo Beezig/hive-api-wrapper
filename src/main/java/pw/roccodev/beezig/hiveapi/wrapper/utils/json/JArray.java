@@ -39,6 +39,10 @@ public class JArray {
         return (int) getLong(index);
     }
 
+    public boolean getBoolean(int index) {
+        return (boolean) jsonInput.get(index);
+    }
+
     public JSONArray getInput() {
         return jsonInput;
     }

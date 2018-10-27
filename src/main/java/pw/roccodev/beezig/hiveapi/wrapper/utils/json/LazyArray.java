@@ -61,4 +61,10 @@ public class LazyArray extends JArray {
         checkIfSourceExists();
         return super.getInt(index);
     }
+
+    @Override
+    public boolean getBoolean(int index) {
+        checkIfSourceExists();
+        return super.getBoolean(index);
+    }
 }
