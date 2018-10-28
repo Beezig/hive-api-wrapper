@@ -8,7 +8,12 @@ public class SKY extends PvPStats {
     private LazyObject source;
 
     public SKY(String usernameOrUUID) {
-        super(usernameOrUUID, "SKY");
+        this(usernameOrUUID, false);
+    }
+
+
+    public SKY(String username, boolean convertToUUID) {
+        super(username, "SKY", convertToUUID);
         source = getSource();
     }
 

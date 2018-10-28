@@ -2,6 +2,7 @@ package pw.roccodev.beezig.hiveapi.wrapper.player;
 
 import org.json.simple.JSONObject;
 import pw.roccodev.beezig.hiveapi.wrapper.game.Game;
+import pw.roccodev.beezig.hiveapi.wrapper.mojang.UsernameToUuid;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
@@ -16,10 +17,18 @@ public class GameStats {
     private String usernameOrUUID;
     private String shortcode;
 
-    public GameStats(String usernameOrUUID, String shortcode) {
-        this.usernameOrUUID = usernameOrUUID;
+    public GameStats(String username, String shortcode, boolean convertToUUID) {
         this.shortcode = shortcode;
+
+        if(convertToUUID)
+            usernameOrUUID = UsernameToUuid.getUUID(username);
+        else usernameOrUUID = username;
+
         source = new LazyObject(null, new UrlBuilder().hive().player(usernameOrUUID, shortcode).build());
+    }
+
+    public GameStats(String usernameOrUUID, String shortcode) {
+       this(usernameOrUUID, shortcode, false);
     }
 
     public String getUUID() {

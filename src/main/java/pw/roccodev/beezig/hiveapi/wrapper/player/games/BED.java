@@ -14,11 +14,12 @@ public class BED extends PvPStats implements WinstreaksReady, MonthliesReady {
     private LazyObject source;
 
     public BED(String usernameOrUUID) {
-        this(usernameOrUUID, "BED");
+        this(usernameOrUUID, false);
     }
 
-    public BED(String usernameOrUUID, String shortcode) {
-        super(usernameOrUUID, shortcode);
+
+    public BED(String username, boolean convertToUUID) {
+        super(username, "BED", convertToUUID);
         source = getSource();
     }
 

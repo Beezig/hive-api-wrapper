@@ -3,18 +3,23 @@ package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthliesReady;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv.TimvMonthlyLeaderboard;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv.TimvMonthlyProfile;
-import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
+import pw.roccodev.beezig.hiveapi.wrapper.player.GameStats;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 
-public class TIMV extends PvPStats implements MonthliesReady {
+public class TIMV extends GameStats implements MonthliesReady {
 
     private LazyObject source;
 
     public TIMV(String usernameOrUUID) {
-        super(usernameOrUUID, "TIMV");
+        this(usernameOrUUID, false);
+    }
+
+
+    public TIMV(String username, boolean convertToUUID) {
+        super(username, "TIMV", convertToUUID);
         source = getSource();
     }
 

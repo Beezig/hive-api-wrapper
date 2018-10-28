@@ -12,7 +12,12 @@ public class DR extends PvPStats implements MonthliesReady {
     private LazyObject source;
 
     public DR(String usernameOrUUID) {
-        super(usernameOrUUID, "BED");
+        this(usernameOrUUID, false);
+    }
+
+
+    public DR(String username, boolean convertToUUID) {
+        super(username, "DR", convertToUUID);
         source = getSource();
     }
 

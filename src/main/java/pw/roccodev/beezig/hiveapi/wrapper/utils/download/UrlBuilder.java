@@ -19,6 +19,11 @@ public class UrlBuilder {
         return new MonthlyUrlBuilder(this);
     }
 
+    public UrlBuilder mojang(String username) {
+        builder.append("api.mojang.com/users/profiles/minecraft/").append(username);
+        return this;
+    }
+
     public URL build() {
         try {
             return new URL(builder.toString().trim());
