@@ -67,5 +67,9 @@ public class LazyObject extends JObject {
         checkIfSourceExists();
         return super.getBoolean(key);
     }
+
+    public void fetch() {
+        checkIfSourceExists();
+    }
 }
 

@@ -1,9 +1,13 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthliesReady;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.dr.DrMonthlyLeaderboard;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.dr.DrMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
+import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
-public class DR extends PvPStats {
+public class DR extends PvPStats implements MonthliesReady {
 
     private LazyObject source;
 
@@ -34,6 +38,33 @@ public class DR extends PvPStats {
 
     public long getTotalCheckpoints() {
         return source.getLong("totalcheckpoints");
+    }
+
+    @Override
+    public DrMonthlyProfile getMonthlyProfile() {
+        return getMonthlyProfile(getUUID());
+    }
+
+    @Override
+    public DrMonthlyProfile getMonthlyProfile(String uuid) {
+        return getMonthlyLeaderboard().getProfiles().stream()
+                .filter(profile -> profile.getUUID().equals(uuid)).findAny().orElse(null);
+    }
+
+    @Override
+    public DrMonthlyProfile getMonthlyProfile(int humanPlace) {
+        return getMonthlyLeaderboard().getProfiles().stream()
+                .filter(profile -> profile.getPlace() == humanPlace - 1).findAny().orElse(null);
+    }
+
+    @Override
+    public DrMonthlyLeaderboard getMonthlyLeaderboard() {
+        return new DrMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().dr().build()));
+    }
+
+    @Override
+    public DrMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
+        return (DrMonthlyLeaderboard) getMonthlyLeaderboard().filter(profile -> profile.getPlace() >= from && profile.getPlace() < to);
     }
 
 }

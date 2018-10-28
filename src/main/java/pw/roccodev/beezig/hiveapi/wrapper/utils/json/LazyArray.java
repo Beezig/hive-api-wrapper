@@ -67,4 +67,8 @@ public class LazyArray extends JArray {
         checkIfSourceExists();
         return super.getBoolean(index);
     }
+
+    public void fetch() {
+        checkIfSourceExists();
+    }
 }

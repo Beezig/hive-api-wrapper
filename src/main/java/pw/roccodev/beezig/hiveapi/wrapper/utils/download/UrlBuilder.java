@@ -15,6 +15,10 @@ public class UrlBuilder {
         return new HiveUrlBuilder(this);
     }
 
+    public MonthlyUrlBuilder monthly() {
+        return new MonthlyUrlBuilder(this);
+    }
+
     public URL build() {
         try {
             return new URL(builder.toString().trim());

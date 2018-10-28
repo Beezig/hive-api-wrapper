@@ -1,11 +1,15 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthliesReady;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv.TimvMonthlyLeaderboard;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv.TimvMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
+import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 
-public class TIMV extends PvPStats {
+public class TIMV extends PvPStats implements MonthliesReady {
 
     private LazyObject source;
 
@@ -62,4 +66,30 @@ public class TIMV extends PvPStats {
         return source.getBoolean("detectivebook");
     }
 
+    @Override
+    public TimvMonthlyProfile getMonthlyProfile() {
+        return getMonthlyProfile(getUUID());
+    }
+
+    @Override
+    public TimvMonthlyProfile getMonthlyProfile(String uuid) {
+        return getMonthlyLeaderboard().getProfiles().stream()
+                .filter(profile -> profile.getUUID().equals(uuid)).findAny().orElse(null);
+    }
+
+    @Override
+    public TimvMonthlyProfile getMonthlyProfile(int humanPlace) {
+        return getMonthlyLeaderboard().getProfiles().stream()
+                .filter(profile -> profile.getPlace() == humanPlace - 1).findAny().orElse(null);
+    }
+
+    @Override
+    public TimvMonthlyLeaderboard getMonthlyLeaderboard() {
+        return new TimvMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().timv().build()));
+    }
+
+    @Override
+    public TimvMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
+        return (TimvMonthlyLeaderboard) getMonthlyLeaderboard().filter(profile -> profile.getPlace() >= from && profile.getPlace() < to);
+    }
 }
