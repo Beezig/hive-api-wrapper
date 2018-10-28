@@ -39,3 +39,18 @@ dependencies {
 
 ```
 **For Ant builds**: You can find the latest version in the [Releases tab](https://github.com/Beezig/hive-api-wrapper/releases/latest).
+
+## Features
+
+### Hive API Coverage
+- [x] Global player stats
+- [x] Gamemode stats
+- [ ] Full player game stats
+- [ ] Game leaderboards
+- [ ] Game maps
+- [ ] Server stats
+- [ ] GameData
+
+### Monthlies
+This wrapper supports [Maxthat](https://github.com/Maxthat)'s DeathRun and TIMV Monthly Leaderboards, as well as [RoccoDev](https://github.com/RoccoDev)'s Bedwars Toolkit.
+
