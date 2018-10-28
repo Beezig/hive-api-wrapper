@@ -1,0 +1,33 @@
+def pomConfig = {
+    licenses {
+        license {
+            name "GPL-3.0"
+            url "https://www.gnu.org/licenses/gpl-3.0.html"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "RoccoDev"
+            name "RoccoDev"
+            organization "--"
+            organizationUrl "http://www.roccodev.pw"
+        }
+    }
+
+    scm {
+        url "https://github.com/Beezig/hive-api-wrapper.git"
+    }
+}
+
+def withPom = { pom ->
+    pom.withXml {
+        def root = asNode()
+        root.appendNode('name', 'hive-api-wrapper')
+        root.appendNode('description', 'An API Wrapper for The Hive written in Java')
+        root.appendNode('url', 'https://github.com/Beezig/hive-api-wrapper')
+        root.children().last() + pomConfig
+    }
+}
+
+ext.withPom = withPom
