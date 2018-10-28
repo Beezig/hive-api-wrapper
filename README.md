@@ -1,4 +1,4 @@
-[![Discord](https://img.shields.io/discord/346695724253184014.svg?style=popout)](http://discord.gg/se7zJsU)
+[![Discord](https://discordapp.com/api/guilds/346695724253184014/embed.png?style=banner2)](http://discord.gg/se7zJsU)  
  [ ![Download](https://api.bintray.com/packages/roccodev/hive-api-wrapper/hive-api-wrapper/images/download.svg) ](https://bintray.com/roccodev/hive-api-wrapper/hive-api-wrapper/_latestVersion)
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/Beezig/hive-api-wrapper.svg)
 [![Travis Master](https://travis-ci.org/Beezig/hive-api-wrapper.svg?branch=master)](http://travis-ci.org/Beezig/hive-api-wrapper)
