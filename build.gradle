@@ -26,6 +26,14 @@ dependencies {
     compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1'
 }
 
+task emptyJar(type: Jar) {
+    classifier 'javadoc'
+}
+
+task sourceJar(type: Jar) {
+    classifier 'sources'
+    from sourceSets.main.allJava
+}
 
 publishing {
     publications {
@@ -34,6 +42,9 @@ publishing {
             groupId "pw.roccodev.beezig"
             artifactId "hive-api-wrapper"
             version System.getenv('TRAVIS_TAG')
+
+            artifact sourceJar
+            artifact emptyJar
 
             withPom(pom)
         }
