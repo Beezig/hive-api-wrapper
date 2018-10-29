@@ -15,7 +15,7 @@ public class HideStats extends PvPStats {
     }
 
     public HideStats(String username, boolean convertToUUID) {
-        super(username, "HideStats", convertToUUID);
+        super(username, "HIDE", convertToUUID);
         source = getSource();
     }
 

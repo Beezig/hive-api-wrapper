@@ -13,7 +13,7 @@ public class SkyStats extends PvPStats {
 
 
     public SkyStats(String username, boolean convertToUUID) {
-        super(username, "SkyStats", convertToUUID);
+        super(username, "SKY", convertToUUID);
         source = getSource();
     }
 

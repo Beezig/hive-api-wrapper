@@ -17,10 +17,17 @@ public class BedStats extends PvPStats implements WinstreaksReady, MonthliesRead
         this(usernameOrUUID, false);
     }
 
+    public BedStats(String username, String shortcode, boolean convertToUUID) {
+        super(username, shortcode, convertToUUID);
+        source = getSource();
+    }
+
+    public BedStats(String username, String shortcode) {
+        this(username, shortcode, false);
+    }
 
     public BedStats(String username, boolean convertToUUID) {
-        super(username, "BedStats", convertToUUID);
-        source = getSource();
+       this(username, "BED", convertToUUID);
     }
 
     public long getBedsDestroyed() {

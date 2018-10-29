@@ -13,7 +13,7 @@ public class MimvStats extends PvPStats {
 
 
     public MimvStats(String username, boolean convertToUUID) {
-        super(username, "MimvStats", convertToUUID);
+        super(username, "MIMV", convertToUUID);
         source = getSource();
     }
 

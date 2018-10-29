@@ -19,7 +19,7 @@ public class TimvStats extends GameStats implements MonthliesReady {
 
 
     public TimvStats(String username, boolean convertToUUID) {
-        super(username, "TimvStats", convertToUUID);
+        super(username, "TIMV", convertToUUID);
         source = getSource();
     }
 

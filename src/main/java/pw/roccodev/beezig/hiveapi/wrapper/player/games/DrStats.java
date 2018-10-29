@@ -17,7 +17,7 @@ public class DrStats extends PvPStats implements MonthliesReady {
 
 
     public DrStats(String username, boolean convertToUUID) {
-        super(username, "DrStats", convertToUUID);
+        super(username, "DR", convertToUUID);
         source = getSource();
     }
 

@@ -14,7 +14,7 @@ public class CaiStats extends GameStats {
     }
 
     public CaiStats(String username, boolean convertToUUID) {
-        super(username, "CaiStats", convertToUUID);
+        super(username, "CAI", convertToUUID);
         source = getSource();
     }
 

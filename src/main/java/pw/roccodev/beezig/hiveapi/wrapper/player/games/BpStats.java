@@ -14,7 +14,7 @@ public class BpStats extends GameStats {
     }
 
     public BpStats(String username, boolean convertToUUID) {
-        super(username, "BpStats", convertToUUID);
+        super(username, "BP", convertToUUID);
         source = getSource();
     }
 
