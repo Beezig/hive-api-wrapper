@@ -3,17 +3,17 @@ package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
-public class MIMV extends PvPStats {
+public class MimvStats extends PvPStats {
 
     private LazyObject source;
 
-    public MIMV(String usernameOrUUID) {
+    public MimvStats(String usernameOrUUID) {
         this(usernameOrUUID, false);
     }
 
 
-    public MIMV(String username, boolean convertToUUID) {
-        super(username, "MIMV", convertToUUID);
+    public MimvStats(String username, boolean convertToUUID) {
+        super(username, "MimvStats", convertToUUID);
         source = getSource();
     }
 

@@ -6,16 +6,16 @@ import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 import java.util.Date;
 import java.util.Map;
 
-public class HIDE extends PvPStats {
+public class HideStats extends PvPStats {
 
     private LazyObject source;
 
-    public HIDE(String usernameOrUUID) {
+    public HideStats(String usernameOrUUID) {
         this(usernameOrUUID, false);
     }
 
-    public HIDE(String username, boolean convertToUUID) {
-        super(username, "HIDE", convertToUUID);
+    public HideStats(String username, boolean convertToUUID) {
+        super(username, "HideStats", convertToUUID);
         source = getSource();
     }
 

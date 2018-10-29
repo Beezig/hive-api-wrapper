@@ -5,16 +5,16 @@ import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 
-public class BP extends GameStats {
+public class BpStats extends GameStats {
 
     private LazyObject source;
 
-    public BP(String usernameOrUUID) {
+    public BpStats(String usernameOrUUID) {
         this(usernameOrUUID, false);
     }
 
-    public BP(String username, boolean convertToUUID) {
-        super(username, "BP", convertToUUID);
+    public BpStats(String username, boolean convertToUUID) {
+        super(username, "BpStats", convertToUUID);
         source = getSource();
     }
 

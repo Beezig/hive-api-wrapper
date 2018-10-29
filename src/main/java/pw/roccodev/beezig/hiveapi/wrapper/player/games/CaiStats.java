@@ -5,16 +5,16 @@ import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 
-public class CAI extends GameStats {
+public class CaiStats extends GameStats {
 
     private LazyObject source;
 
-    public CAI(String usernameOrUUID) {
+    public CaiStats(String usernameOrUUID) {
         this(usernameOrUUID, false);
     }
 
-    public CAI(String username, boolean convertToUUID) {
-        super(username, "CAI", convertToUUID);
+    public CaiStats(String username, boolean convertToUUID) {
+        super(username, "CaiStats", convertToUUID);
         source = getSource();
     }
 

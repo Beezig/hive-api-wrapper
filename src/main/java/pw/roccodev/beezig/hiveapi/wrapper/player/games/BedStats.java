@@ -9,17 +9,17 @@ import pw.roccodev.beezig.hiveapi.wrapper.player.WinstreaksReady;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
-public class BED extends PvPStats implements WinstreaksReady, MonthliesReady {
+public class BedStats extends PvPStats implements WinstreaksReady, MonthliesReady {
 
     private LazyObject source;
 
-    public BED(String usernameOrUUID) {
+    public BedStats(String usernameOrUUID) {
         this(usernameOrUUID, false);
     }
 
 
-    public BED(String username, boolean convertToUUID) {
-        super(username, "BED", convertToUUID);
+    public BedStats(String username, boolean convertToUUID) {
+        super(username, "BedStats", convertToUUID);
         source = getSource();
     }
 

@@ -9,17 +9,17 @@ import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 
-public class TIMV extends GameStats implements MonthliesReady {
+public class TimvStats extends GameStats implements MonthliesReady {
 
     private LazyObject source;
 
-    public TIMV(String usernameOrUUID) {
+    public TimvStats(String usernameOrUUID) {
         this(usernameOrUUID, false);
     }
 
 
-    public TIMV(String username, boolean convertToUUID) {
-        super(username, "TIMV", convertToUUID);
+    public TimvStats(String username, boolean convertToUUID) {
+        super(username, "TimvStats", convertToUUID);
         source = getSource();
     }
 

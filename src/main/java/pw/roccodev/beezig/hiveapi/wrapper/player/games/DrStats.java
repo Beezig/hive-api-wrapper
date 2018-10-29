@@ -7,17 +7,17 @@ import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
-public class DR extends PvPStats implements MonthliesReady {
+public class DrStats extends PvPStats implements MonthliesReady {
 
     private LazyObject source;
 
-    public DR(String usernameOrUUID) {
+    public DrStats(String usernameOrUUID) {
         this(usernameOrUUID, false);
     }
 
 
-    public DR(String username, boolean convertToUUID) {
-        super(username, "DR", convertToUUID);
+    public DrStats(String username, boolean convertToUUID) {
+        super(username, "DrStats", convertToUUID);
         source = getSource();
     }
 

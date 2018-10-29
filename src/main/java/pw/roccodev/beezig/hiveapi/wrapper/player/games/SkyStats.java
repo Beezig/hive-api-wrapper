@@ -3,17 +3,17 @@ package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
-public class SKY extends PvPStats {
+public class SkyStats extends PvPStats {
 
     private LazyObject source;
 
-    public SKY(String usernameOrUUID) {
+    public SkyStats(String usernameOrUUID) {
         this(usernameOrUUID, false);
     }
 
 
-    public SKY(String username, boolean convertToUUID) {
-        super(username, "SKY", convertToUUID);
+    public SkyStats(String username, boolean convertToUUID) {
+        super(username, "SkyStats", convertToUUID);
         source = getSource();
     }
 
