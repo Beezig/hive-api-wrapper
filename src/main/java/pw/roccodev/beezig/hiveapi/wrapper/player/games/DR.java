@@ -45,6 +45,10 @@ public class DR extends PvPStats implements MonthliesReady {
         return source.getLong("totalcheckpoints");
     }
 
+    public Visibility getSelectedVisibility() {
+        return Visibility.valueOf(source.getString("visibility"));
+    }
+
     @Override
     public DrMonthlyProfile getMonthlyProfile() {
         return getMonthlyProfile(getUUID());
@@ -70,6 +74,10 @@ public class DR extends PvPStats implements MonthliesReady {
     @Override
     public DrMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
         return (DrMonthlyLeaderboard) getMonthlyLeaderboard().filter(profile -> profile.getPlace() >= from && profile.getPlace() < to);
+    }
+
+    public enum Visibility {
+        SHOW_ALL, RUNNERS_AS_GHOST, RUNNERS_INVISIBLE;
     }
 
 }
