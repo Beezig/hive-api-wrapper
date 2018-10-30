@@ -23,5 +23,11 @@ public class HiveUrlBuilder extends UrlBuilder {
         return this;
     }
 
+    public HiveUrlBuilder status(String player) {
+        player(player);
+        builder.append("/status/raw");
+        return this;
+    }
+
 
 }

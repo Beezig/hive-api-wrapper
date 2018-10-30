@@ -1,7 +1,10 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player;
 
 import org.json.simple.JSONObject;
+import pw.roccodev.beezig.hiveapi.wrapper.mojang.UsernameToUuid;
 import pw.roccodev.beezig.hiveapi.wrapper.player.rank.PlayerRank;
+import pw.roccodev.beezig.hiveapi.wrapper.player.status.PlayerStatus;
+import pw.roccodev.beezig.hiveapi.wrapper.player.status.RawPlayerStatus;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.JObject;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
@@ -15,9 +18,19 @@ import java.util.stream.Collectors;
 public class HivePlayer {
 
     private LazyObject source;
+    private String input;
 
     public HivePlayer(String usernameOrUUID) {
-        source = new LazyObject(null, new UrlBuilder().hive().player(usernameOrUUID).build());
+        this(usernameOrUUID, false);
+    }
+
+    public HivePlayer(String username, boolean convertToUUID) {
+
+        if(convertToUUID)
+            input = UsernameToUuid.getUUID(username);
+        else input = username;
+
+        source = new LazyObject(null, new UrlBuilder().hive().player(input).build());
     }
 
     public String getUsername() {
@@ -58,6 +71,14 @@ public class HivePlayer {
 
     public Date getCachedAt() {
         return new Date(source.getLong("cached") * 1000);
+    }
+
+    public PlayerStatus getStatus() {
+        return new PlayerStatus(source.getJObject("status"));
+    }
+
+    public RawPlayerStatus getRawStatus() {
+        return new RawPlayerStatus(new LazyObject(null, new UrlBuilder().hive().status(input).build()));
     }
 
     public List<Achievement> getAchievements() {
