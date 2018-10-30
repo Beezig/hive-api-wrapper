@@ -1,11 +1,12 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
 import pw.roccodev.beezig.hiveapi.wrapper.player.GameStats;
+import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 
-public class CaiStats extends GameStats {
+public class CaiStats extends GameStats implements Titleable {
 
     private LazyObject source;
 
@@ -51,4 +52,10 @@ public class CaiStats extends GameStats {
     public Date getFirstLogin() {
         return new Date(source.getLong("firstlogin") * 1000);
     }
+
+    @Override
+    public String getTitle() {
+        return source.getString("title");
+    }
+
 }

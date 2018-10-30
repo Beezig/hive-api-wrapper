@@ -1,12 +1,13 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
+import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 import java.util.Map;
 
-public class HideStats extends PvPStats {
+public class HideStats extends PvPStats implements Titleable {
 
     private LazyObject source;
 
@@ -48,5 +49,10 @@ public class HideStats extends PvPStats {
     @Override
     public long getKills() {
         return getKillsAsHider() + getKillsAsSeeker();
+    }
+
+    @Override
+    public String getTitle() {
+        return source.getString("title");
     }
 }

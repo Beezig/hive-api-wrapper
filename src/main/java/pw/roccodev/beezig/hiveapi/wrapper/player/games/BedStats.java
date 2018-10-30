@@ -5,11 +5,12 @@ import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.bed.BedMonthlyLeaderboard;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.bed.BedMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
+import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.player.WinstreaksReady;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
-public class BedStats extends PvPStats implements WinstreaksReady, MonthliesReady {
+public class BedStats extends PvPStats implements WinstreaksReady, MonthliesReady, Titleable {
 
     private LazyObject source;
 
@@ -66,5 +67,10 @@ public class BedStats extends PvPStats implements WinstreaksReady, MonthliesRead
     @Override
     public BedMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
         return new BedMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().bedwars().leaderboard(from, to).build()));
+    }
+
+    @Override
+    public String getTitle() {
+        return source.getString("title");
     }
 }

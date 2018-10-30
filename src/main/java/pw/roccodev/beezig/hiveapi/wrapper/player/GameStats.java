@@ -47,10 +47,6 @@ public class GameStats {
         return source.getLong("games_played");
     }
 
-    public String getTitle() {
-        return source.getString("title");
-    }
-
     public List<Achievement> getAchievements() {
 
         JSONObject rawAchievements = source.getJSONObject("achievements");

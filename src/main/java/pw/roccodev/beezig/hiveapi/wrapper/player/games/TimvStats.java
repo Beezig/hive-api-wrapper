@@ -4,12 +4,13 @@ import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthliesReady;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv.TimvMonthlyLeaderboard;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv.TimvMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.GameStats;
+import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 
-public class TimvStats extends GameStats implements MonthliesReady {
+public class TimvStats extends GameStats implements MonthliesReady, Titleable {
 
     private LazyObject source;
 
@@ -96,5 +97,10 @@ public class TimvStats extends GameStats implements MonthliesReady {
     @Override
     public TimvMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
         return (TimvMonthlyLeaderboard) getMonthlyLeaderboard().filter(profile -> profile.getPlace() >= from && profile.getPlace() < to);
+    }
+
+    @Override
+    public String getTitle() {
+        return source.getString("title");
     }
 }

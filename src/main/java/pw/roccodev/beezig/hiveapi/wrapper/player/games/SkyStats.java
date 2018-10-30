@@ -1,9 +1,10 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
+import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
-public class SkyStats extends PvPStats {
+public class SkyStats extends PvPStats implements Titleable {
 
     private LazyObject source;
 
@@ -29,6 +30,11 @@ public class SkyStats extends PvPStats {
 
     public long getTimeAlive() {
         return source.getLong("timealive");
+    }
+
+    @Override
+    public String getTitle() {
+        return source.getString("title");
     }
 
 }

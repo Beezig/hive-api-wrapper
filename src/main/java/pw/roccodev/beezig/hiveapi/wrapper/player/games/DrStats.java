@@ -4,10 +4,11 @@ import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthliesReady;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.dr.DrMonthlyLeaderboard;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.dr.DrMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
+import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
-public class DrStats extends PvPStats implements MonthliesReady {
+public class DrStats extends PvPStats implements MonthliesReady, Titleable {
 
     private LazyObject source;
 
@@ -74,6 +75,11 @@ public class DrStats extends PvPStats implements MonthliesReady {
     @Override
     public DrMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
         return (DrMonthlyLeaderboard) getMonthlyLeaderboard().filter(profile -> profile.getPlace() >= from && profile.getPlace() < to);
+    }
+
+    @Override
+    public String getTitle() {
+        return source.getString("title");
     }
 
     public enum Visibility {

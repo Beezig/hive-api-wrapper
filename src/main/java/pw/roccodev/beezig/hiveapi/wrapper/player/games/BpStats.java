@@ -1,11 +1,12 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
 import pw.roccodev.beezig.hiveapi.wrapper.player.GameStats;
+import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
 
 import java.util.Date;
 
-public class BpStats extends GameStats {
+public class BpStats extends GameStats implements Titleable {
 
     private LazyObject source;
 
@@ -33,5 +34,10 @@ public class BpStats extends GameStats {
     @Override
     public Date getLastLogin() {
         return null;
+    }
+
+    @Override
+    public String getTitle() {
+        return source.getString("title");
     }
 }
