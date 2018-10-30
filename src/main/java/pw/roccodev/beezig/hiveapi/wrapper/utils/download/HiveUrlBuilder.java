@@ -29,5 +29,30 @@ public class HiveUrlBuilder extends UrlBuilder {
         return this;
     }
 
+    public HiveUrlBuilder gameMaps(String game) {
+        game(game);
+        builder.append("/maps");
+        return this;
+    }
+
+    private void server(String extra) {
+        builder.append(URLs.SERVER_ENDPOINT).append(extra);
+    }
+
+    public HiveUrlBuilder serverUnique() {
+        server("/uniquecount");
+        return this;
+    }
+
+    public HiveUrlBuilder serverCurrent() {
+        server("/playercount");
+        return this;
+    }
+
+    public HiveUrlBuilder serverAchievements() {
+        server("/achievements");
+        return this;
+    }
+
 
 }

@@ -6,6 +6,7 @@ class URLs {
 
     static final String PLAYER_ENDPOINT = "player/";
     static final String GAME_ENDPOINT = "game/";
+    static final String SERVER_ENDPOINT = "server/";
 
 
 }
