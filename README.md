@@ -45,10 +45,10 @@ dependencies {
 ### Hive API Coverage
 - [x] Global player stats
 - [x] Gamemode stats
-- [ ] Full player game stats
-- [ ] Game leaderboards
-- [ ] Game maps
-- [ ] Server stats
+- [x] Full player game stats
+- [x] Game leaderboards
+- [x] Game maps
+- [x] Server stats
 - [ ] GameData
 
 ### Monthlies

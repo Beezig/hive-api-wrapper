@@ -1,5 +1,6 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import pw.roccodev.beezig.hiveapi.wrapper.mojang.UsernameToUuid;
 import pw.roccodev.beezig.hiveapi.wrapper.player.rank.PlayerRank;
@@ -97,6 +98,15 @@ public class HivePlayer {
             if(!(entry.getValue() instanceof JSONObject)) continue; // Skip the version object
             achievements.add(new Achievement(entry.getKey(), new JObject((JSONObject)entry.getValue())));
         }
+    }
+
+    public List<Trophy> getTrophies() {
+        List<Trophy> parsedTrophies = new ArrayList<>();
+        JSONArray trophies = source.getJSONArray("trophies");
+        for(Object trophy : trophies) {
+            parsedTrophies.add(new Trophy(new JObject((JSONObject)trophy)));
+        }
+        return parsedTrophies;
     }
 
     public List<Achievement> getUnlockedAchievements() {
