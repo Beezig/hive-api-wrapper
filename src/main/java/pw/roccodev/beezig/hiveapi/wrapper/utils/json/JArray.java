@@ -43,6 +43,10 @@ public class JArray {
         return (boolean) jsonInput.get(index);
     }
 
+    public double getDouble(int index) {
+        return (double) jsonInput.get(index);
+    }
+
     public JSONArray getInput() {
         return jsonInput;
     }

@@ -24,6 +24,10 @@ public class UrlBuilder {
         return this;
     }
 
+    public SpeedrunUrlBuilder speedrun() {
+        return new SpeedrunUrlBuilder(this);
+    }
+
     public URL build() {
         try {
             return new URL(builder.toString().trim());

@@ -68,6 +68,12 @@ public class LazyObject extends JObject {
         return super.getBoolean(key);
     }
 
+    @Override
+    public double getDouble(String key) {
+        checkIfSourceExists();
+        return super.getDouble(key);
+    }
+
     public void fetch() {
         checkIfSourceExists();
     }

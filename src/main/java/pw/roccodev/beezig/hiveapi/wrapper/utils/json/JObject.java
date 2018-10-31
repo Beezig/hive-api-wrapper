@@ -43,6 +43,10 @@ public class JObject {
         return (boolean) jsonInput.get(key);
     }
 
+    public double getDouble(String key) {
+        return (double) jsonInput.get(key);
+    }
+
     public JSONObject getInput() {
         return jsonInput;
     }

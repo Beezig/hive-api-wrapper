@@ -5,8 +5,11 @@ import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.dr.DrMonthlyLeaderboar
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.dr.DrMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
 import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
+import pw.roccodev.beezig.hiveapi.wrapper.speedrun.WorldRecord;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.LazyObject;
+
+import java.util.Map;
 
 public class DrStats extends PvPStats implements MonthliesReady, Titleable {
 
@@ -20,6 +23,10 @@ public class DrStats extends PvPStats implements MonthliesReady, Titleable {
     public DrStats(String username, boolean convertToUUID) {
         super(username, "DR", convertToUUID);
         source = getSource();
+    }
+
+    public static WorldRecord getWorldRecord(String mapSpeedrunId) {
+        return new WorldRecord(new LazyObject(null, new UrlBuilder().speedrun().level(mapSpeedrunId).build()));
     }
 
     public long getTrapsActivated() {
@@ -48,6 +55,26 @@ public class DrStats extends PvPStats implements MonthliesReady, Titleable {
 
     public Visibility getSelectedVisibility() {
         return Visibility.valueOf(source.getString("visibility"));
+    }
+
+    public Map<String, Long> getMapRecords() {
+        return source.getJSONObject("maprecords");
+    }
+
+    public Map<String, Long> getMapKills() {
+        return source.getJSONObject("mapkills");
+    }
+
+    public Map<String, Long> getMapDeaths() {
+        return source.getJSONObject("mapdeaths");
+    }
+
+    public Map<String, Long> getTrapClassKills() {
+        return source.getJSONObject("trapclasskills");
+    }
+
+    public Map<String, Long> getTrapClassDeaths() {
+        return source.getJSONObject("trapclassdeaths");
     }
 
     @Override

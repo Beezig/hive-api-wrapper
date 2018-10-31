@@ -68,6 +68,12 @@ public class LazyArray extends JArray {
         return super.getBoolean(index);
     }
 
+    @Override
+    public double getDouble(int index) {
+        checkIfSourceExists();
+        return super.getDouble(index);
+    }
+
     public void fetch() {
         checkIfSourceExists();
     }
