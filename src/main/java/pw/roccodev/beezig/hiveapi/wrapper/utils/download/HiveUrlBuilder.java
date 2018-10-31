@@ -29,9 +29,19 @@ public class HiveUrlBuilder extends UrlBuilder {
         return this;
     }
 
-    public HiveUrlBuilder gameMaps(String game) {
-        game(game);
+    public HiveUrlBuilder maps() {
         builder.append("/maps");
+        return this;
+    }
+
+    public HiveUrlBuilder leaderboard(int start, int end) {
+        builder.append("/leaderboard/").append(start).append('/').append(end);
+        return this;
+    }
+
+    public HiveUrlBuilder leaderboardWithVariation(String shortcode, String variation, int start, int end) {
+        builder.append("game/").append(shortcode)
+                .append("/leaderboard/").append(start).append('/').append(end).append('/').append(variation);
         return this;
     }
 
