@@ -29,6 +29,10 @@ public class MaxthatMonthlyProfile extends MonthlyProfile {
 
     @Override
     public long getPlace() {
+        return key;
+    }
+
+    public long getHumanPlace() {
         return key + 1;
     }
 }
