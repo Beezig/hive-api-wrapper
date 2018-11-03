@@ -29,6 +29,6 @@ public class MaxthatMonthlyProfile extends MonthlyProfile {
 
     @Override
     public long getPlace() {
-        return key;
+        return key + 1;
     }
 }
