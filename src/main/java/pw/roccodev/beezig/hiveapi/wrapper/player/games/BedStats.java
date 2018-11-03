@@ -56,7 +56,7 @@ public class BedStats extends PvPStats implements WinstreaksReady, MonthliesRead
 
     @Override
     public MonthlyProfile getMonthlyProfile(int humanPlace) {
-        return getMonthlyLeaderboard(humanPlace - 1, humanPlace).getProfiles().get(0);
+        return getMonthlyLeaderboard(humanPlace, humanPlace).getProfiles().get(0);
     }
 
     @Override
