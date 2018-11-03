@@ -1,7 +1,6 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthliesReady;
-import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.bed.BedMonthlyLeaderboard;
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.bed.BedMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
@@ -55,7 +54,7 @@ public class BedStats extends PvPStats implements WinstreaksReady, MonthliesRead
     }
 
     @Override
-    public MonthlyProfile getMonthlyProfile(int humanPlace) {
+    public BedMonthlyProfile getMonthlyProfile(int humanPlace) {
         return getMonthlyLeaderboard(humanPlace, humanPlace).getProfiles().get(0);
     }
 
