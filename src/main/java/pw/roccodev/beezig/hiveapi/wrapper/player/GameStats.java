@@ -20,7 +20,8 @@ public class GameStats {
     public GameStats(String username, String shortcode, boolean convertToUUID) {
         this.shortcode = shortcode;
 
-        if(convertToUUID)
+        if(convertToUUID &&
+                username.length() != 32) // Short-circuit for inputs that are already UUIDs
             usernameOrUUID = UsernameToUuid.getUUID(username);
         else usernameOrUUID = username;
 
