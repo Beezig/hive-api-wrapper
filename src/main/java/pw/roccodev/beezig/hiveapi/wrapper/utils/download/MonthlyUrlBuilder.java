@@ -1,7 +1,5 @@
 package pw.roccodev.beezig.hiveapi.wrapper.utils.download;
 
-import pw.roccodev.beezig.hiveapi.wrapper.GlobalConfiguration;
-
 public class MonthlyUrlBuilder extends UrlBuilder {
 
 
@@ -10,17 +8,17 @@ public class MonthlyUrlBuilder extends UrlBuilder {
     }
 
     public MonthlyUrlBuilder bedwars() {
-        builder.append("api.roccodev.pw/bedwars/monthlies/");
+        builder.append("api.roccodev.pw/bed/monthlies/");
         return this;
     }
 
     public MonthlyUrlBuilder timv() {
-        builder.append("thtmx.rocks/timv/api/").append(GlobalConfiguration.MAXTHAT_KEY);
+        builder.append("api.roccodev.pw/timv/monthlies/");
         return this;
     }
 
     public MonthlyUrlBuilder dr() {
-        builder.append("thtmx.rocks/dr/api/").append(GlobalConfiguration.MAXTHAT_KEY);
+        builder.append("api.roccodev.pw/dr/monthlies/");
         return this;
     }
 

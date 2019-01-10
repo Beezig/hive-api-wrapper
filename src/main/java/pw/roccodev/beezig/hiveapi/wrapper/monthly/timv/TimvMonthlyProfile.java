@@ -1,14 +1,14 @@
-package pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv;
+package pw.roccodev.beezig.hiveapi.wrapper.monthly.timv;
 
-import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.MaxthatMonthlyProfile;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.JObject;
 
-public class TimvMonthlyProfile extends MaxthatMonthlyProfile {
+public class TimvMonthlyProfile extends MonthlyProfile {
 
     private JObject source;
 
-    public TimvMonthlyProfile(JObject source, int key) {
-        super(source, key);
+    public TimvMonthlyProfile(JObject source) {
+        super(source);
         this.source = source;
     }
 
@@ -17,16 +17,21 @@ public class TimvMonthlyProfile extends MaxthatMonthlyProfile {
         return source.getLong("karma");
     }
 
+    @Override
+    public long getPlace() {
+        return source.getLong("place");
+    }
+
     public long getInnocentPoints() {
-        return source.getLong("innocent");
+        return source.getLong("i_points");
     }
 
     public long getDetectivePoints() {
-        return source.getLong("detective");
+        return source.getLong("d_points");
     }
 
     public long getTraitorPoints() {
-        return source.getLong("traitor");
+        return source.getLong("t_points");
     }
 
     public long getRolePoints() {

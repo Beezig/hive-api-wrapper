@@ -1,8 +1,8 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthliesReady;
-import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.dr.DrMonthlyLeaderboard;
-import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.dr.DrMonthlyProfile;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.dr.DrMonthlyLeaderboard;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.dr.DrMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.PvPStats;
 import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.speedrun.WorldRecord;
@@ -84,24 +84,22 @@ public class DrStats extends PvPStats implements MonthliesReady, Titleable {
 
     @Override
     public DrMonthlyProfile getMonthlyProfile(String uuid) {
-        return getMonthlyLeaderboard().getProfiles().stream()
-                .filter(profile -> profile.getUUID().equals(uuid)).findAny().orElse(null);
+        return new DrMonthlyProfile(new LazyObject(null, new UrlBuilder().monthly().dr().profile(uuid).build()));
     }
 
     @Override
     public DrMonthlyProfile getMonthlyProfile(int humanPlace) {
-        return getMonthlyLeaderboard().getProfiles().stream()
-                .filter(profile -> profile.getPlace() == humanPlace - 1).findAny().orElse(null);
+        return getMonthlyLeaderboard(humanPlace, humanPlace).getProfiles().get(0);
     }
 
     @Override
     public DrMonthlyLeaderboard getMonthlyLeaderboard() {
-        return new DrMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().dr().build()));
+        return new DrMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().dr().leaderboard().build()));
     }
 
     @Override
     public DrMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
-        return (DrMonthlyLeaderboard) getMonthlyLeaderboard().filter(profile -> profile.getPlace() >= from && profile.getPlace() < to);
+        return new DrMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().dr().leaderboard(from, to).build()));
     }
 
     @Override

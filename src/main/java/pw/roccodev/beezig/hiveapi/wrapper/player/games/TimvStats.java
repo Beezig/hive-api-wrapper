@@ -1,8 +1,8 @@
 package pw.roccodev.beezig.hiveapi.wrapper.player.games;
 
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthliesReady;
-import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv.TimvMonthlyLeaderboard;
-import pw.roccodev.beezig.hiveapi.wrapper.monthly.maxthat.timv.TimvMonthlyProfile;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.timv.TimvMonthlyLeaderboard;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.timv.TimvMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.player.GameStats;
 import pw.roccodev.beezig.hiveapi.wrapper.player.Titleable;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
@@ -79,24 +79,22 @@ public class TimvStats extends GameStats implements MonthliesReady, Titleable {
 
     @Override
     public TimvMonthlyProfile getMonthlyProfile(String uuid) {
-        return getMonthlyLeaderboard().getProfiles().stream()
-                .filter(profile -> profile.getUUID().equals(uuid)).findAny().orElse(null);
+        return new TimvMonthlyProfile(new LazyObject(null, new UrlBuilder().monthly().dr().profile(uuid).build()));
     }
 
     @Override
     public TimvMonthlyProfile getMonthlyProfile(int humanPlace) {
-        return getMonthlyLeaderboard().getProfiles().stream()
-                .filter(profile -> profile.getPlace() == humanPlace - 1).findAny().orElse(null);
+        return getMonthlyLeaderboard(humanPlace, humanPlace).getProfiles().get(0);
     }
 
     @Override
     public TimvMonthlyLeaderboard getMonthlyLeaderboard() {
-        return new TimvMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().timv().build()));
+        return new TimvMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().dr().leaderboard().build()));
     }
 
     @Override
     public TimvMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
-        return (TimvMonthlyLeaderboard) getMonthlyLeaderboard().filter(profile -> profile.getPlace() >= from && profile.getPlace() < to);
+        return new TimvMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().dr().leaderboard(from, to).build()));
     }
 
     @Override
