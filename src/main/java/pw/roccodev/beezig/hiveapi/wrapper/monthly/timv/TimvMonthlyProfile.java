@@ -22,6 +22,10 @@ public class TimvMonthlyProfile extends MonthlyProfile {
         return source.getLong("place");
     }
 
+    public String getUsername() {
+        return source.getString("username");
+    }
+
     public long getInnocentPoints() {
         return source.getLong("i_points");
     }

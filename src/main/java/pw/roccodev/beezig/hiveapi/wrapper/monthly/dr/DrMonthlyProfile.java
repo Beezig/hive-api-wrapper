@@ -17,6 +17,10 @@ public class DrMonthlyProfile extends MonthlyProfile {
         return source.getLong("points");
     }
 
+    public String getUsername() {
+        return source.getString("username");
+    }
+
     @Override
     public long getPlace() {
         return source.getLong("place");
