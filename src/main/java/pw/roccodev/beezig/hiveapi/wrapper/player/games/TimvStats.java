@@ -79,7 +79,7 @@ public class TimvStats extends GameStats implements MonthliesReady, Titleable {
 
     @Override
     public TimvMonthlyProfile getMonthlyProfile(String uuid) {
-        return new TimvMonthlyProfile(new LazyObject(null, new UrlBuilder().monthly().dr().profile(uuid).build()));
+        return new TimvMonthlyProfile(new LazyObject(null, new UrlBuilder().monthly().timv().profile(uuid).build()));
     }
 
     @Override
@@ -89,12 +89,12 @@ public class TimvStats extends GameStats implements MonthliesReady, Titleable {
 
     @Override
     public TimvMonthlyLeaderboard getMonthlyLeaderboard() {
-        return new TimvMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().dr().leaderboard().build()));
+        return new TimvMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().timv().leaderboard().build()));
     }
 
     @Override
     public TimvMonthlyLeaderboard getMonthlyLeaderboard(int from, int to) {
-        return new TimvMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().dr().leaderboard(from, to).build()));
+        return new TimvMonthlyLeaderboard(new LazyObject(null, new UrlBuilder().monthly().timv().leaderboard(from, to).build()));
     }
 
     @Override
