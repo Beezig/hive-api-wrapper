@@ -1,9 +1,9 @@
 package pw.roccodev.beezig.hiveapi.wrapper.monthly.timv;
 
-import pw.roccodev.beezig.hiveapi.wrapper.monthly.MonthlyProfile;
+import pw.roccodev.beezig.hiveapi.wrapper.monthly.RoccoDevMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.JObject;
 
-public class TimvMonthlyProfile extends MonthlyProfile {
+public class TimvMonthlyProfile extends RoccoDevMonthlyProfile {
 
     private JObject source;
 
@@ -15,15 +15,6 @@ public class TimvMonthlyProfile extends MonthlyProfile {
     @Override
     public long getPoints() {
         return source.getLong("karma");
-    }
-
-    @Override
-    public long getPlace() {
-        return source.getLong("place");
-    }
-
-    public String getUsername() {
-        return source.getString("username");
     }
 
     public long getInnocentPoints() {

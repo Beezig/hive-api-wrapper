@@ -7,18 +7,53 @@ public class MonthlyUrlBuilder extends UrlBuilder {
         builder = parent.builder;
     }
 
+    private void appendRoccoDev(String mode) {
+        builder.append("api.roccodev.pw/").append(mode).append("/monthlies/");
+    }
+
+
     public MonthlyUrlBuilder bedwars() {
-        builder.append("api.roccodev.pw/bed/monthlies/");
+        appendRoccoDev("bed");
         return this;
     }
 
     public MonthlyUrlBuilder timv() {
-        builder.append("api.roccodev.pw/timv/monthlies/");
+        appendRoccoDev("timv");
         return this;
     }
 
     public MonthlyUrlBuilder dr() {
-        builder.append("api.roccodev.pw/dr/monthlies/");
+        appendRoccoDev("dr");
+        return this;
+    }
+
+    public MonthlyUrlBuilder cai() {
+        appendRoccoDev("cai");
+        return this;
+    }
+
+    public MonthlyUrlBuilder hide() {
+        appendRoccoDev("hide");
+        return this;
+    }
+
+    public MonthlyUrlBuilder bp() {
+        appendRoccoDev("bp");
+        return this;
+    }
+
+    public MonthlyUrlBuilder gnt() {
+        appendRoccoDev("gnt");
+        return this;
+    }
+
+    public MonthlyUrlBuilder gntm() {
+        appendRoccoDev("gntm");
+        return this;
+    }
+
+    public MonthlyUrlBuilder sky() {
+        appendRoccoDev("sky");
         return this;
     }
 

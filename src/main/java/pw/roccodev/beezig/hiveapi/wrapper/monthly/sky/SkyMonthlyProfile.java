@@ -1,13 +1,13 @@
-package pw.roccodev.beezig.hiveapi.wrapper.monthly.dr;
+package pw.roccodev.beezig.hiveapi.wrapper.monthly.sky;
 
 import pw.roccodev.beezig.hiveapi.wrapper.monthly.PvPMonthlyProfile;
 import pw.roccodev.beezig.hiveapi.wrapper.utils.json.JObject;
 
-public class DrMonthlyProfile extends PvPMonthlyProfile {
+public class SkyMonthlyProfile extends PvPMonthlyProfile {
 
     private JObject source;
 
-    public DrMonthlyProfile(JObject source) {
+    public SkyMonthlyProfile(JObject source) {
         super(source);
         this.source = source;
     }
@@ -18,6 +18,10 @@ public class DrMonthlyProfile extends PvPMonthlyProfile {
 
     public long getGamesPlayed() {
         return source.getLong("played");
+    }
+
+    public String getMostPointsChange() {
+        return source.getString("most_change");
     }
 
 }
