@@ -20,12 +20,12 @@ public class HideMonthlyProfile extends RoccoDevMonthlyProfile {
         return source.getLong("played");
     }
 
-    public String getHiderKills() {
-        return source.getString("hider_kills");
+    public long getHiderKills() {
+        return source.getLong("hider_kills");
     }
 
-    public String getSeekerKills() {
-        return source.getString("seeker_kills");
+    public long getSeekerKills() {
+        return source.getLong("seeker_kills");
     }
 
 }
