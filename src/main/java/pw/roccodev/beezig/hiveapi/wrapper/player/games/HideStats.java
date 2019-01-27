@@ -61,6 +61,11 @@ public class HideStats extends PvPStats implements Titleable, MonthliesReady {
     }
 
     @Override
+    public Date getLastLogin() {
+        return new Date(source.getLong("lastlogin")); // Already in milliseconds
+    }
+
+    @Override
     public HideMonthlyProfile getMonthlyProfile() {
         return getMonthlyProfile(getUUID());
     }
