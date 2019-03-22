@@ -11,7 +11,7 @@ def pomConfig = {
             id "RoccoDev"
             name "RoccoDev"
             organization "--"
-            organizationUrl "http://www.roccodev.pw"
+            organizationUrl "http://www.rocco.dev"
         }
     }
 

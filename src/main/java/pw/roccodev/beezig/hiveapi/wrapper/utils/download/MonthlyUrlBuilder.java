@@ -8,7 +8,7 @@ public class MonthlyUrlBuilder extends UrlBuilder {
     }
 
     private void appendRoccoDev(String mode) {
-        builder.append("api.roccodev.pw/").append(mode).append("/monthlies/");
+        builder.append("api.rocco.dev/").append(mode).append("/monthlies/");
     }
 
 
