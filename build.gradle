@@ -5,7 +5,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'maven-publish'
 apply plugin: 'maven'
 
-apply from: rootProject.file("pom.gradle")
+apply from: 'pom.gradle'
 
 buildscript {
     repositories {
