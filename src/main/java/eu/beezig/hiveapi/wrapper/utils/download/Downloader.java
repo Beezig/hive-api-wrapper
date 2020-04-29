@@ -1,6 +1,7 @@
 package eu.beezig.hiveapi.wrapper.utils.download;
 
 import eu.beezig.hiveapi.wrapper.HiveWrapper;
+import eu.beezig.hiveapi.wrapper.exception.ProfileNotFoundException;
 import eu.beezig.hiveapi.wrapper.utils.json.JArray;
 import eu.beezig.hiveapi.wrapper.utils.json.JObject;
 import org.json.simple.JSONArray;
@@ -41,14 +42,19 @@ public class Downloader {
             }
             conn.addRequestProperty("User-Agent", HiveWrapper.USER_AGENT);
             conn.setRequestProperty("Accept", "application/json");
-            try(InputStreamReader stream = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
-                try(BufferedReader buffer = new BufferedReader(stream)) {
-                    future.complete(new JSONParser().parse(buffer));
-                } catch (ParseException e) {
-                    future.completeExceptionally(e);
+            try {
+                if(conn.getResponseCode() == 404) {
+                    future.completeExceptionally(new ProfileNotFoundException());
+                    return;
                 }
-            }
-            catch (IOException e) {
+                try (InputStreamReader stream = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
+                    try (BufferedReader buffer = new BufferedReader(stream)) {
+                        future.complete(new JSONParser().parse(buffer));
+                    } catch (ParseException e) {
+                        future.completeExceptionally(e);
+                    }
+                }
+            } catch (IOException e) {
                 future.completeExceptionally(e);
             }
         });

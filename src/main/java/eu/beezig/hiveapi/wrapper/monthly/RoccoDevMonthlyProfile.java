@@ -22,5 +22,7 @@ public class RoccoDevMonthlyProfile extends MonthlyProfile {
         return source.getString("username");
     }
 
-
+    public String getUUID() {
+        return source.getString("UUID");
+    }
 }

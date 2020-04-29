@@ -11,14 +11,14 @@ import java.util.concurrent.CompletableFuture;
 
 public class Profiles {
     private static CompletableFuture<JObject> getStats(String shortcode, String username) {
-        if(username.length() > 16) {
+        if(username.length() < 16) {
             return UsernameToUuid.getUUID(username).thenApplyAsync(uuid -> JObject.get(new UrlBuilder().hive().player(uuid, shortcode).build()).join());
         }
         return JObject.get(new UrlBuilder().hive().player(username, shortcode).build());
     }
 
     public static CompletableFuture<HivePlayer> global(String username) {
-        if(username.length() > 16) {
+        if(username.length() < 16) {
             return UsernameToUuid.getUUID(username).thenApplyAsync(uuid -> JObject.get(new UrlBuilder().hive().player(uuid).build()).join()).thenApplyAsync(HivePlayer::new);
         }
         return JObject.get(new UrlBuilder().hive().player(username).build()).thenApplyAsync(HivePlayer::new);
