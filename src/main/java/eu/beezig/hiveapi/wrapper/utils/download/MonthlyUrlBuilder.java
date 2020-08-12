@@ -50,11 +50,35 @@ public class MonthlyUrlBuilder extends UrlBuilder {
         return this;
     }
 
+    public MonthlyUrlBuilder grav() {
+        appendRoccoDev("grav");
+        return this;
+    }
+
+    public MonthlyUrlBuilder draw() {
+        appendRoccoDev("draw");
+        return this;
+    }
+
+    public MonthlyUrlBuilder sp() {
+        appendRoccoDev("sp");
+        return this;
+    }
+
+    public MonthlyUrlBuilder cr() {
+        appendRoccoDev("cr");
+        return this;
+    }
+
+    public MonthlyUrlBuilder bd() {
+        appendRoccoDev("bd");
+        return this;
+    }
+
     public MonthlyUrlBuilder sky() {
         appendRoccoDev("sky");
         return this;
     }
-
 
     public MonthlyUrlBuilder leaderboard() {
         builder.append("leaderboard");
@@ -70,7 +94,4 @@ public class MonthlyUrlBuilder extends UrlBuilder {
         builder.append("profile/").append(uuid);
         return this;
     }
-
-
-
 }

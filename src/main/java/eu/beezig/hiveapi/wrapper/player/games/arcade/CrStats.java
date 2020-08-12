@@ -1,12 +1,17 @@
 package eu.beezig.hiveapi.wrapper.player.games.arcade;
 
+import eu.beezig.hiveapi.wrapper.monthly.MonthliesReady;
+import eu.beezig.hiveapi.wrapper.monthly.cr.CrMonthlyLeaderboard;
+import eu.beezig.hiveapi.wrapper.monthly.cr.CrMonthlyProfile;
 import eu.beezig.hiveapi.wrapper.player.PvPStats;
 import eu.beezig.hiveapi.wrapper.player.Titleable;
+import eu.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import eu.beezig.hiveapi.wrapper.utils.json.JObject;
 
 import java.util.Date;
+import java.util.concurrent.CompletableFuture;
 
-public class CrStats extends PvPStats implements Titleable {
+public class CrStats extends PvPStats implements Titleable, MonthliesReady {
 
     public CrStats(JObject source) {
         super(source);
@@ -49,5 +54,30 @@ public class CrStats extends PvPStats implements Titleable {
     @Override
     public String getTitle() {
         return source.getString("title");
+    }
+
+    @Override
+    public CompletableFuture<CrMonthlyProfile> getMonthlyProfile() {
+        return getMonthlyProfile(getUUID());
+    }
+
+    @Override
+    public CompletableFuture<CrMonthlyProfile> getMonthlyProfile(String uuid) {
+        return JObject.get(new UrlBuilder().monthly().cr().profile(uuid).build()).thenApplyAsync(CrMonthlyProfile::new);
+    }
+
+    @Override
+    public CompletableFuture<CrMonthlyProfile> getMonthlyProfile(int humanPlace) {
+        return getMonthlyLeaderboard(humanPlace, humanPlace).thenApplyAsync(lb -> lb.getProfiles().get(0));
+    }
+
+    @Override
+    public CompletableFuture<CrMonthlyLeaderboard> getMonthlyLeaderboard() {
+        return JObject.get(new UrlBuilder().monthly().cr().leaderboard().build()).thenApplyAsync(CrMonthlyLeaderboard::new);
+    }
+
+    @Override
+    public CompletableFuture<CrMonthlyLeaderboard> getMonthlyLeaderboard(int from, int to) {
+        return JObject.get(new UrlBuilder().monthly().cr().leaderboard(from, to).build()).thenApplyAsync(CrMonthlyLeaderboard::new);
     }
 }
