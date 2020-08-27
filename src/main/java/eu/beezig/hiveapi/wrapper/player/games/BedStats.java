@@ -3,31 +3,16 @@ package eu.beezig.hiveapi.wrapper.player.games;
 import eu.beezig.hiveapi.wrapper.monthly.MonthliesReady;
 import eu.beezig.hiveapi.wrapper.monthly.bed.BedMonthlyLeaderboard;
 import eu.beezig.hiveapi.wrapper.monthly.bed.BedMonthlyProfile;
-import eu.beezig.hiveapi.wrapper.player.PvPStats;
 import eu.beezig.hiveapi.wrapper.player.Titleable;
-import eu.beezig.hiveapi.wrapper.player.WinstreaksReady;
 import eu.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import eu.beezig.hiveapi.wrapper.utils.json.JObject;
 
 import java.util.concurrent.CompletableFuture;
 
-public class BedStats extends PvPStats implements WinstreaksReady, MonthliesReady, Titleable {
+public class BedStats extends BedSpecificStats implements MonthliesReady, Titleable {
 
     public BedStats(JObject source) {
         super(source);
-    }
-
-    public long getBedsDestroyed() {
-        return source.getLong("beds_destroyed");
-    }
-
-    public long getTeamsEliminated() {
-        return source.getLong("teams_eliminated");
-    }
-
-    @Override
-    public long getWinstreak() {
-        return source.getLong("win_streak");
     }
 
     @Override

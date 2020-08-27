@@ -7,6 +7,7 @@ import eu.beezig.hiveapi.wrapper.speedrun.WorldRecord;
 import eu.beezig.hiveapi.wrapper.utils.download.UrlBuilder;
 import eu.beezig.hiveapi.wrapper.utils.json.JObject;
 
+import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
 public class Profiles {
@@ -38,6 +39,9 @@ public class Profiles {
     }
     public static CompletableFuture<BedStats> bed(String username) {
         return getStats("BED", username).thenApplyAsync(BedStats::new);
+    }
+    public static CompletableFuture<BedSpecificStats> bedSpecific(String username, String gameCode) {
+        return getStats(gameCode.toUpperCase(Locale.ROOT), username).thenApplyAsync(BedSpecificStats::new);
     }
     public static CompletableFuture<BpStats> bp(String username) {
         return getStats("BP", username).thenApplyAsync(BpStats::new);
